@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Remove Last Child Element</title>
+</head>
+<body>
+    <div id="myDiv">
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+        <p>Paragraph 3</p>
+    </div>
+    <button id="removeItem">Remove Last Item</button>
+
+    <script>
+        document.getElementById('removeItem').addEventListener('click', function() {
+            let myDiv = document.getElementById('myDiv');
+            
+            if (myDiv.lastChild) {
+                myDiv.removeChild(myDiv.lastChild);
+            }
+        });
+    </script>
+</body>
+</html>

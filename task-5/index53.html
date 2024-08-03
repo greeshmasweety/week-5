@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Track Mouse Movement</title>
+    <style>
+        #trackDiv {
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="trackDiv"></div>
+    <div id="coordinates">Coordinates: (0, 0)</div>
+
+    <script>
+        document.getElementById('trackDiv').addEventListener('mousemove', function(event) {
+            let x = event.clientX - event.target.getBoundingClientRect().left;
+            let y = event.clientY - event.target.getBoundingClientRect().top;
+            document.getElementById('coordinates').textContent = `Coordinates: (${x}, ${y})`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+</head>
+<body>
+    <form id="myForm">
+        <input type="text" id="name" placeholder="Name" required></div>
+        <input type="email" id="email" placeholder="Email" required></div>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="errorMessage" style="color: red;"></div>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let errorMessage = document.getElementById('errorMessage');
+
+            if (name === '' || email === '') {
+                errorMessage.textContent = 'All fields are required.';
+            } else {
+                errorMessage.textContent = '';
+                console.log('Form submitted successfully!');
+               
+            }
+        });
+    </script>
+</body>
+</html>

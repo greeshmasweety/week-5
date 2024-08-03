@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Style Sibling Elements</title>
+</head>
+<body>
+  <div class="sibling">Sibling 1</div>
+  <div class="sibling">Sibling 2</div>
+  <div class="sibling">Sibling 3</div>
+  <script>
+    
+    var siblings = document.getElementsByClassName('sibling');
+    
+    
+    Array.from(siblings).forEach(function(sibling, index) {
+      sibling.style.fontSize = (14 + index * 2) + 'px'; 
+      sibling.style.marginLeft = (index * 10) + 'px';  
+    });
+  </script>
+</body>
+</html>

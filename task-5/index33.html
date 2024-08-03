@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Toggle Background Color</title>
+  <style>
+    .color1 {
+      background-color: lightblue;
+    }
+    .color2 {
+      background-color: rgb(157, 105, 240);
+    }
+  </style>
+</head>
+<body>
+  <button id="colorButton" class="color1" onclick="toggleColor()">Toggle Color</button>
+  <script>
+    
+      var button = document.getElementById('colorButton');
+      
+    
+      if (button.classList.contains('color1')) {
+        button.classList.remove('color1');
+        button.classList.add('color2');
+      } else {
+        button.classList.remove('color2');
+        button.classList.add('color1');
+      }
+    }
+  </script>
+</body>
+</html>

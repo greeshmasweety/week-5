@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #e1f00f;
+            color: rgba(61, 36, 174, 0.822);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 100%;
+            min-height:100vh;
+            background: #8c848a;
+            padding: 10px;
+        }
+        .todo-app {
+            width: 100%;
+            max-width: 540px;
+            background: #e97a7a;
+            margin: 100px auto 20px;
+            padding: 40px 30px 70px;
+            border-radius: 10px;
+        }
+        .todo-app h1 {
+            color: #050500;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .todo-app h1 img {
+            width: 30px;
+            margin-left: 10px;
+        }
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #edeef0;
+            border-radius: 30px;
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+        input {
+            flex: 1;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 10px;
+        }
+        button {
+            border: none;
+            outline: none;
+            padding: 16px 50px;
+            background: #ff5945;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 40px;
+        }
+        ul li {
+            list-style: none;
+            font-size: 17px;
+            padding: 12px 8px 12px 50px;
+            user-select: none;
+            cursor: pointer;
+            position: relative;
+        }
+        ul li::before {
+            content: '';
+            position: absolute;
+            height: 28px;
+            width: 28px;
+            border-radius: 50px;
+            background-image: url("https://cdn-icons-png.flaticon.com/512/169/169779.png");
+            background-size: cover;
+            background-position: center;
+            top: 12px;
+            left: 8px;
+        }
+        ul li.checked {
+            color: #991cdc;
+            text-decoration: line-through;
+        }
+        ul li.checked::before {
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2sqhniNRNs2BbklX_VWtPxaUwnjih34PbTw&s");
+        }
+        ul li span {
+            position: absolute;
+            right: 0;
+            top: 5px;
+            width: 40px;
+            height: 40px;
+            font-size: 22px;
+            color: #555;
+            line-height: 40px;
+            text-align: center;
+        }
+        ul li span:hover {
+            background: #edeef0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="todo-app">
+            <h1>To-Do List<img src="https://cdn-icons-png.freepik.com/256/8476/8476658.png?semt=ais_hybrid" alt="To-Do List Icon"></h1>
+            <div class="row">
+                <input type="text" id="input-box" placeholder="Add your task">
+                <button onclick="addTask()">Add</button>
+            </div>
+            <ul id="list-container">
+                
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+    loadTasks();
+    
+    document.querySelector('button').addEventListener('click', () => {
+        addTask();
+    });
+
+    document.querySelector('#input-box').addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            addTask();
+        }
+    });
+});
+
+function loadTasks() {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    tasks.forEach(task => {
+        addTaskElement(task.text, task.completed);
+    });
+}
+
+function saveTasks() {
+    const tasks = [];
+    document.querySelectorAll('ul li').forEach(li => {
+        tasks.push({
+            text: li.innerText.replace('×', '').trim(),
+            completed: li.classList.contains('checked')
+        });
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+function addTask() {
+    const inputBox = document.getElementById('input-box');
+    const taskText = inputBox.value.trim();
+    if (taskText) {
+        addTaskElement(taskText, false);
+        inputBox.value = '';
+        saveTasks();
+    }
+}
+
+function addTaskElement(taskText, completed) {
+    const li = document.createElement('li');
+    li.innerText = taskText;
+    li.className = completed ? 'checked' : 'unchecked';
+    li.addEventListener('click', toggleTask);
+    const span = document.createElement('span');
+    span.innerHTML = '&times;';
+    span.addEventListener('click', deleteTask);
+    li.appendChild(span);
+    document.getElementById('list-container').appendChild(li);
+}
+
+function toggleTask(event) {
+    const li = event.target;
+    li.classList.toggle('checked');
+    saveTasks();
+}
+
+function deleteTask(event) {
+    event.stopPropagation();
+    const li = event.target.parentElement;
+    li.remove();
+    saveTasks();
+}
+
+    </script>
+</body>
+</html>

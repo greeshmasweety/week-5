@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>
+       
+        the window size
+    </title>
+     
+    <style>
+        body {
+            text-align: center;
+        }
+        h1 {
+            color:#710080;
+        }
+    </style>
+</head>
+ 
+<body>
+    <h1>welcome to webplus academy</h1>
+     
+    <h3>
+        Resizing the screen size and display its
+        <br>corresponding width and height
+    </h3>
+    <div id="height">Height: <span></span></div>
+    <div id="width">Width: <span></span></div>
+     
+    <script>
+        const height = document.querySelector("#height span");
+        const width = document.querySelector("#width span");
+         
+        
+        window.onload = function() {
+            height.innerHTML = window.innerHeight;
+            width.innerHTML = window.innerWidth;
+        };
+         
+       
+        window.onresize = function() {
+         
+           
+            
+            height.innerHTML = window.innerHeight;
+            width.innerHTML = window.innerWidth;
+        };
+    </script>
+</body>
+</html>

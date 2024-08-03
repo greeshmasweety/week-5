@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clone and Append Div</title>
+</head>
+<body>
+    <div id="sourceDiv">
+        <p>Source Paragraph 1</p>
+        <p>Source Paragraph 2</p>
+    </div>
+    <div id="destinationDiv"></div>
+    <button id="cloneDiv">Clone and Append Div</button>
+
+    <script>
+        document.getElementById('cloneDiv').addEventListener('click', function() {
+            let sourceDiv = document.getElementById('sourceDiv');
+           
+            let clone = sourceDiv.cloneNode(true);
+            
+            document.getElementById('destinationDiv').appendChild(clone);
+        });
+    </script>
+</body>
+</html>

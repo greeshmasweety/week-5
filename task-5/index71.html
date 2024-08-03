@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Gallery</title>
+    <style>
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .large-image {
+            width: 500px;
+            height: 500px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="https://www.fabulousflowers.co.za/cdn/shop/products/RedRoseFantasyTopShot_FabulousFlowers_2000x.jpg?v=1704218860" alt="Thumbnail 1" class="thumbnail" data-large="image1.jpg">
+        <img src="https://i.pinimg.com/736x/ff/ed/84/ffed84e7e14b136b4e7c9bc1e54fb8c4.jpg" alt="Thumbnail 2" class="thumbnail" data-large="image2.jpg">
+        <img src="https://i0.wp.com/www.tripstodiscover.com/wp-content/uploads/2018/10/Kawachi-Fuji-Gardens-Japan.jpg?resize=784%2C588" alt="Thumbnail 3" class="thumbnail" data-large="image3.jpg">
+    </div>
+    <img src="https://i.pinimg.com/736x/ad/8d/fe/ad8dfed9da8e11d0714f9dbb7f7fe578--roses-roses-pink-roses.jpg" alt="Large Image" id="largeImage" class="large-image">
+
+    <script>
+        document.querySelectorAll('.thumbnail').forEach(function(thumbnail) {
+            thumbnail.addEventListener('click', function() {
+                let largeImageUrl = thumbnail.getAttribute('data-large');
+                document.getElementById('largeImage').src = largeImageUrl;
+            });
+        });
+    </script>
+</body>
+</html>

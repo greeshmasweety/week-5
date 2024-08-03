@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Update Image Source</title>
+</head>
+<body>
+  <img id="imageElement" src="https://miro.medium.com/v2/resize:fit:1400/1*UU3VBQ_cf2Nu6M5BqkU6Ng.jpeg" alt="Old Image">
+  <button onclick="changeImage()">Change Image</button>
+  <script>
+    function changeImage() {
+      
+      var img = document.getElementById('imageElement');
+      
+      
+      img.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStqsqBECVlwqFhoz4wRdMHdsl0KG7_oeUpkg&s';
+    }
+  </script>
+</body>
+</html>

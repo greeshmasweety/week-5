@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Style First and Last Child</title>
+</head>
+<body>
+  <div id="parentDiv">
+    <div>First Child</div>
+    <div>Middle Child</div>
+    <div>Last Child</div>
+  </div>
+  <script>
+   
+    var parent = document.getElementById('parentDiv');
+    
+    
+    var firstChild = parent.firstElementChild;
+    var lastChild = parent.lastElementChild;
+    
+   
+    firstChild.style.color = 'blue';
+    lastChild.style.color = 'orange';
+  </script>
+</body>
+</html>
